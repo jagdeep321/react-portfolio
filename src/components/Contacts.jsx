@@ -1,10 +1,11 @@
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contacts = ()=>{
 
@@ -13,19 +14,64 @@ const Contacts = ()=>{
 // template id = template_wt3iu08
 
 
-  const form = useRef();
+
+const [form, setForm] = useState({
+        name: "",
+        email: "",
+        num: "",
+        msg: "",
+    });
+
+
+  const form1 = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
 
+    if (!form.name && !form.email && !form.num && !form.msg) {
+    return toast.error("Enter all details!");
+  }
+
+  // ✅ Name
+  if (!form.name.trim()) {
+    return toast.error("Name is Required!");
+  }
+
+  // ✅ Email
+  if (!form.email.trim()) {
+    return toast.error("Email is Required!");
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(form.email)) {
+    return toast.error("Enter a valid Email!");
+  }
+
+  // ✅ Phone
+  if (!form.num.trim()) {
+    return toast.error("Phone Number is Required!");
+  }
+
+  // Optional: 10 digit validation
+  const phonePattern = /^[0-9]{10}$/;
+  if (!phonePattern.test(form.num)) {
+    return toast.error("Enter valid 10 digit Phone Number!");
+  }
+
+  // ✅ Message
+  if (!form.msg.trim()) {
+    return toast.error("Message is Required!");
+  }
+  
     emailjs.sendForm(
       'service_xf063wi',
       'template_wt3iu08',
-      form.current,
+      form1.current,
       'RaqX0lXQ_Kf2cTFLp'
     )
     .then((result) => {
-        alert("Message Sent Successfully!");
+             toast.success("Your Message Send Successfully 🎉");
+                setForm({ name: "", email: "", num: "", msg: "" });
     }, (error) => {
         alert("Failed to send message");
     });
@@ -36,6 +82,7 @@ const Contacts = ()=>{
     return(
 
     <div id="contact">
+         <Toaster position="top-center" />
       <div id="hire">
         <h1 className="lets">🤝 Let's Work Together</h1>
       </div>
@@ -78,14 +125,27 @@ const Contacts = ()=>{
         <div className="contactcart2">
           <div className="contactchild">
             <h1 className="connect">Start a Project</h1>
-            <form ref={form} onSubmit={sendEmail} >
-              <input className="name" name="user_name"   placeholder="Your Name" type="text" required />
-              <input className="name"  placeholder="Your Email" name="user_email" type="email" required />
-              <input className="name" name="user_phone"   placeholder="Your Phone" type="text" required />
+            <form ref={form1} onSubmit={sendEmail} >
+              <input className="name" name="user_name"   placeholder="Your Name" type="text"  value={form.name}
+                                    onChange={(e) =>
+                                        setForm((prev) => ({ ...prev, name: e.target.value }))
+                                    } />
+              <input className="name"  placeholder="Your Email" name="user_email" type="email"  value={form.email}
+                                    onChange={(e) =>
+                                        setForm((prev) => ({ ...prev, email: e.target.value }))
+                                    } />
+              <input className="name" name="user_phone"   placeholder="Your Phone" type="text"  value={form.num}
+                                    onChange={(e) =>
+                                        setForm((prev) => ({ ...prev, num: e.target.value }))
+                                    } />
               <textarea className="textarea"  name="message" placeholder="Tell me about your project requirements" cols="40"
-                rows="4"></textarea>
+                rows="4" value={form.msg}
+                                    onChange={(e) =>
+                                        setForm((prev) => ({ ...prev, msg: e.target.value }))}></textarea>
               <button  type="submit"  className="collab">Let's Collaborate</button>
             </form>
+
+            
           </div>
         </div>
 
