@@ -44,7 +44,7 @@ const About = ()=>{
 
     </div>
     <div className="cvbox" >
-      <a className="cv" href={cv} target="_blank">VISIT CV</a>
+      <a className="cv" href={cv} target="_blank"      rel="noopener noreferrer">VISIT CV</a>
     </div>
 
 

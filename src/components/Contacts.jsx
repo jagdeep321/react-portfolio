@@ -51,24 +51,24 @@ const Contacts = ()=>{
             <div className="maindetail">
               <div className="personaldetail">
                 <i className="phone fa fa-phone"><FaPhoneAlt /></i>
-                <a className="num" href="tel:+91 9463182321" target="_blank">+91 9463182321</a>
+                <a className="num" href="tel:+91 9463182321" target="_blank"     rel="noopener noreferrer">+91 9463182321</a>
               </div>
               <div className="personaldetail">
                 <i className="envelop fa fa-envelope"> <FaEnvelope /></i>
-                <a className="gmail" href="mailto:jagdeepsilky@gmail.com" target="_blank">jagdeepsilky@gmail.com</a>
+                <a className="gmail" href="mailto:jagdeepsilky@gmail.com" target="_blank"    rel="noopener noreferrer">jagdeepsilky@gmail.com</a>
               </div>
               <div className="personaldetail">
                 <i className="envelop fa fa-envelope"><FaEnvelope /></i>
-                <a className="gmail" href="mailto:jindaljagdee007@gmail.com" target="_blank">jindaljagdee007@gmail.com</a>
+                <a className="gmail" href="mailto:jindaljagdee007@gmail.com" target="_blank"     rel="noopener noreferrer">jindaljagdee007@gmail.com</a>
               </div>
 
             </div>
             <div className="icons">
-              <a href="https://www.instagram.com/i_jagdeep007?utm_source=qr&igsh=M2FtcTBqNjllMmll" target="_blank"><i
+              <a href="https://www.instagram.com/i_jagdeep007?utm_source=qr&igsh=M2FtcTBqNjllMmll" target="_blank"     rel="noopener noreferrer"><i
                   className="insta fa-brands fa-instagram"> <FaInstagram /></i></a>
               <a href="https://www.linkedin.com/in/jagdeep-jindal-2900a0376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                target="_blank"><i className="insta fa-brands fa-linkedin"> <FaLinkedin /></i></a>
-              <a href="https://wa.me/+919463182321" target="_blank"><i className="insta fa-brands fa-whatsapp"> <FaWhatsapp /></i></a>
+                target="_blank"     rel="noopener noreferrer"><i className="insta fa-brands fa-linkedin"> <FaLinkedin /></i></a>
+              <a href="https://wa.me/+919463182321" target="_blank"     rel="noopener noreferrer"><i className="insta fa-brands fa-whatsapp"> <FaWhatsapp /></i></a>
             </div>
           </div>
 
